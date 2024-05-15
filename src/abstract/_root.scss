@@ -1,0 +1,11 @@
+@use "./variables";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: variables.$ft-principal;
+}
+
+:root {
+  background-color: variables.$bg-color;
+}
