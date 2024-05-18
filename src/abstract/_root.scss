@@ -5,7 +5,9 @@
   box-sizing: border-box;
   font-family: variables.$ft-principal;
 }
-
+body {
+  padding-top: 100px;
+}
 :root {
   background-color: variables.$bg-color;
 }
