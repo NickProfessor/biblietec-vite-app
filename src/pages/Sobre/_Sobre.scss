@@ -1,0 +1,26 @@
+@use "../../abstract/variables";
+
+.sobre {
+  width: 100%;
+  text-align: center;
+  .rotulo {
+    background-color: variables.$cor-secundaria;
+    color: variables.$branco;
+    padding: 18px 0;
+    h3 {
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+  }
+  .descricao {
+    width: 85%;
+    margin: 28px auto;
+    // background-color: rgba(255, 0, 0, 0.374);
+    h2 {
+      font-size: 40px;
+    }
+    p {
+      margin: 40px 0;
+    }
+  }
+}
