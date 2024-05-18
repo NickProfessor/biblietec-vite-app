@@ -1,18 +1,33 @@
 import { Link } from "react-router-dom";
 import "./_Menu.scss";
+import { useEffect, useRef } from "react";
 
 export default function Menu() {
-  const btn_hamburguer = document.querySelector(".fa-bars");
-  const menu_Links = document.querySelector(".links-paginas");
-  const btn_Fechar = document.querySelector(".botaoDeFechar");
+  const btnHamburguerRef = useRef(null);
+  const menuLinksRef = useRef(null);
+  const btnFecharRef = useRef(null);
 
-  btn_hamburguer.addEventListener("click", () => {
-    menu_Links.style.display = "flex";
-  });
+  useEffect(() => {
+    const btnHamburguer = btnHamburguerRef.current;
+    const menuLinks = menuLinksRef.current;
+    const btnFechar = btnFecharRef.current;
 
-  btn_Fechar.addEventListener("click", () => {
-    menu_Links.style.display = "none";
-  });
+    const openMenu = () => {
+      if (menuLinks) menuLinks.style.display = "flex";
+    };
+
+    const closeMenu = () => {
+      if (menuLinks) menuLinks.style.display = "none";
+    };
+
+    if (btnHamburguer) btnHamburguer.addEventListener("click", openMenu);
+    if (btnFechar) btnFechar.addEventListener("click", closeMenu);
+
+    return () => {
+      if (btnHamburguer) btnHamburguer.removeEventListener("click", openMenu);
+      if (btnFechar) btnFechar.removeEventListener("click", closeMenu);
+    };
+  }, []);
 
   return (
     <header className="cabecalho">
@@ -23,9 +38,9 @@ export default function Menu() {
         </span>
         <input type="text" name="" id="" />
       </div>
-      <i className="fa-solid fa-bars"></i>
-      <div className="links-paginas">
-        <span className="botaoDeFechar">
+      <i ref={btnHamburguerRef} className="fa-solid fa-bars"></i>
+      <div ref={menuLinksRef} className="links-paginas">
+        <span ref={btnFecharRef} className="botaoDeFechar">
           <p>
             Fechar <i className="fa-solid fa-xmark"></i>
           </p>
