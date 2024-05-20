@@ -19,8 +19,51 @@
     h2 {
       font-size: 40px;
     }
-    p {
-      margin: 40px 0;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .sobre {
+    text-align: left;
+    .rotulo {
+      text-align: center;
+    }
+    .fundacao {
+      margin: 5em auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Duas colunas, cada uma com 1 fração do espaço disponível */
+      /* Espaçamento entre os itens */
+      align-items: center;
+      grid-template-areas:
+        "titulo imagem"
+        "texto imagem";
+
+      // flex-direction: column;
+      h2 {
+        grid-area: titulo;
+      }
+      p {
+        grid-area: texto;
+        font-size: 18px;
+        margin: 0;
+      }
+      img {
+        margin-left: auto;
+        margin-right: 10%;
+        grid-area: imagem;
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+    .topicos {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .marcos {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
   }
 }
