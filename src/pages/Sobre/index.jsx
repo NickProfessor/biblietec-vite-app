@@ -9,7 +9,7 @@ export default function Sobre() {
         <div className="rotulo">
           <h3>Quem somos</h3>
         </div>
-        <div className="descricao">
+        <div className="descricao fundacao">
           <h2>Fundação</h2>
           <img src={images.livro} alt="" />
           <p>
@@ -31,12 +31,16 @@ export default function Sobre() {
           <h3>Missão, visão e valores</h3>
         </div>
         <div className="descricao">
-          <Topico image={images.foguete} />
-          <Topico image={images.olho} />
-          <Topico image={images.coracao} />
-          <Marco img={images.instituicao} />
-          <Marco img={images.selo} />
-          <Marco img={images.titulo} />
+          <div className="topicos">
+            <Topico image={images.foguete} />
+            <Topico image={images.olho} />
+            <Topico image={images.coracao} />
+          </div>
+          <div className="marcos">
+            <Marco img={images.instituicao} />
+            <Marco img={images.selo} />
+            <Marco img={images.titulo} />
+          </div>
         </div>
       </section>
     </div>
