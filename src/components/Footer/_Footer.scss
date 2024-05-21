@@ -1,0 +1,10 @@
+@use "../../abstract/variables";
+
+.texto-footer {
+  background-color: variables.$cinza-escuro;
+  color: variables.$branco;
+  font-weight: 300;
+  text-align: center;
+  padding: 0.8em;
+  font-size: 28px;
+}
