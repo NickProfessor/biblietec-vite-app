@@ -31,8 +31,7 @@
     .fundacao {
       margin: 5em auto;
       display: grid;
-      grid-template-columns: 1fr 1fr; /* Duas colunas, cada uma com 1 fração do espaço disponível */
-      /* Espaçamento entre os itens */
+      grid-template-columns: 1fr 1fr;
       align-items: center;
       grid-template-areas:
         "titulo imagem"
