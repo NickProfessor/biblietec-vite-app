@@ -5,6 +5,7 @@ import livro from "./icone-livro.svg";
 import olho from "./icone-olho.svg";
 import selo from "./icone-selo.svg";
 import titulo from "./icone-titulo.svg";
+import background from "./imagem-de-fundo.png";
 
 export default {
   coracao,
@@ -14,4 +15,5 @@ export default {
   olho,
   selo,
   titulo,
+  background,
 };
