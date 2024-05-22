@@ -3,7 +3,7 @@
 [SASS__BADGE]: https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white
 [FIGMA__BADGE]: https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white
 [PROJECT__BADGE]: https://img.shields.io/badge/📱Visit_this_project-000?style=for-the-badge&logo=project
-[PROJECT__URL]: https://github.com/Fernanda-Kipper/Readme-Templates
+[PROJECT__URL]: https://biblietec.vercel.app
 
 <h1 align="center" style="font-weight: bold;">Biblietec 💻📖</h1>
 
