@@ -6,6 +6,7 @@ import olho from "./icone-olho.svg";
 import selo from "./icone-selo.svg";
 import titulo from "./icone-titulo.svg";
 import background from "./imagem-de-fundo.png";
+import capa_harry from "./capa-harry.svg";
 
 export default {
   coracao,
@@ -16,4 +17,5 @@ export default {
   selo,
   titulo,
   background,
+  capa_harry,
 };
