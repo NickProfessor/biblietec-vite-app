@@ -1,0 +1,85 @@
+@use "../../abstract/variables";
+.pagina-livros {
+  width: 100%;
+  padding: 0 3%;
+  text-align: center;
+  background-color: variables.$cor-principal;
+  .containerLivro {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  h2 {
+    color: variables.$branco;
+    padding: 2em 0;
+    font-size: 2em;
+  }
+  .input-pesquisar {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    padding: 2em 0;
+    input {
+      padding: 0.3em;
+      font-size: 1em;
+      color: variables.$branco;
+      padding-left: 5em;
+      border-radius: 18px;
+      border: solid 2px variables.$cor-secundaria;
+      background: none;
+      width: 100%;
+      outline: none;
+    }
+    span {
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      top: 43%;
+      margin-left: 2em;
+      display: flex;
+      align-items: center;
+      gap: 1.5em;
+      color: variables.$cinza-escuro;
+    }
+  }
+  .secao-livros {
+    display: grid;
+    margin: 0 auto;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+  }
+  #mostrarMais {
+    padding: 1em;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: variables.$cinza-escuro;
+    color: variables.$branco;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 302px;
+    text-transform: uppercase;
+    margin: 40px 0;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .pagina-livros {
+    padding: 0 5%;
+    .texto-pesquise {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        text-align: left;
+        font-size: 3em;
+      }
+      .input-pesquisar {
+        text-align: right;
+        width: 50%;
+        max-width: 840px;
+        margin: 0;
+      }
+    }
+  }
+}
