@@ -1,33 +1,31 @@
 import { Link } from "react-router-dom";
 import "./_Menu.scss";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Menu() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const btnHamburguerRef = useRef(null);
-  const menuLinksRef = useRef(null);
   const btnFecharRef = useRef(null);
 
   useEffect(() => {
     const btnHamburguer = btnHamburguerRef.current;
-    const menuLinks = menuLinksRef.current;
     const btnFechar = btnFecharRef.current;
 
-    const openMenu = () => {
-      if (menuLinks) menuLinks.style.display = "flex";
+    const handleResize = () => {
+      if (window.innerWidth >= 1080) {
+        setIsMenuOpen(false);
+      }
     };
 
-    const closeMenu = () => {
-      if (menuLinks) menuLinks.style.display = "none";
-    };
-
-    if (btnHamburguer) btnHamburguer.addEventListener("click", openMenu);
-    if (btnFechar) btnFechar.addEventListener("click", closeMenu);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      if (btnHamburguer) btnHamburguer.removeEventListener("click", openMenu);
-      if (btnFechar) btnFechar.removeEventListener("click", closeMenu);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const openMenu = () => setIsMenuOpen(true);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header className="cabecalho">
@@ -38,16 +36,26 @@ export default function Menu() {
         </span>
         <input type="text" name="" id="" />
       </div>
-      <i ref={btnHamburguerRef} className="fa-solid fa-bars"></i>
-      <div ref={menuLinksRef} className="links-paginas">
-        <span ref={btnFecharRef} className="botaoDeFechar">
+      <i
+        ref={btnHamburguerRef}
+        className="fa-solid fa-bars"
+        onClick={openMenu}
+      ></i>
+      <div className={`links-paginas ${isMenuOpen ? "open" : ""}`}>
+        <span ref={btnFecharRef} className="botaoDeFechar" onClick={closeMenu}>
           <p>
             Fechar <i className="fa-solid fa-xmark"></i>
           </p>
         </span>
-        <Link to="/">Inicio</Link>
-        <Link to="/livros">Livros</Link>
-        <Link to="/sobre">Sobre</Link>
+        <Link to="/" onClick={closeMenu}>
+          Inicio
+        </Link>
+        <Link to="/livros" onClick={closeMenu}>
+          Livros
+        </Link>
+        <Link to="/sobre" onClick={closeMenu}>
+          Sobre
+        </Link>
       </div>
     </header>
   );

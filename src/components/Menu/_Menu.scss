@@ -55,6 +55,11 @@ header {
     padding: 1em;
     text-align: center;
     top: 0;
+
+    &.open {
+      display: flex;
+    }
+
     a,
     span {
       color: white;
