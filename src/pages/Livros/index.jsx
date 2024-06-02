@@ -3,12 +3,12 @@ import Livro from "../../components/Livro";
 import "./_Livros.scss";
 import { useState } from "react";
 export default function Livros() {
-  const [livros, setLivros] = useState([0]);
+  const [livros, setLivros] = useState([]);
 
   const buscaLivros = async () => {
     try {
       const res = await fetch(
-        "https://openlibrary.org/search.json?q=machado+de+assis"
+        "https://openlibrary.org/search.json?q=harry+potter&fields=key,title,author_name,edition_count,cover_i,subject&limit=50"
       );
       const data = await res.json();
       const listaLivros = data.docs;
@@ -37,9 +37,16 @@ export default function Livros() {
         <section className="secao-livros">
           {livros.map((livro) => (
             <Livro
+              id={livro.key}
               title={livro.title}
               image={livro.cover_i}
-              edicoes={livro.edition_count}
+              editions={livro.edition_count}
+              author={livro.author_name}
+              subject={
+                livro.subject && livro.subject.length >= 2
+                  ? livro.subject.slice(0, 2).join(", ")
+                  : "sem categoria"
+              }
             />
           ))}
         </section>

@@ -1,9 +1,30 @@
+import { useEffect, useState } from "react";
 import images from "../../assets/images";
 import "./_Livro.scss";
 
-export default function Livro({ title, image, edicoes }) {
+export default function Livro({ id, title, image, editions, author, subject }) {
+  const [description, setDescription] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("https://openlibrary.org" + id + ".json");
+        const data = await res.json();
+        const description = data.description.value
+          ? data.description.value
+          : "descrição não está disponível";
+        setDescription(description);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+  const exibeModal = async () => {
+    console.log(id, title, image, editions, author, subject, description);
+  };
   return (
-    <div className="livro">
+    <div className="livro" onClick={exibeModal}>
       <h3 id="nomeDoLivro">{title}</h3>
       <img
         src={
@@ -14,7 +35,7 @@ export default function Livro({ title, image, edicoes }) {
         id="imagemDoLivro"
       />
       <h3 id="preco">
-        {edicoes > 1 ? `${edicoes} Edições` : `${edicoes} Edição`}
+        {editions > 1 ? `${editions} Edições` : `${editions} Edição`}
       </h3>
     </div>
   );
