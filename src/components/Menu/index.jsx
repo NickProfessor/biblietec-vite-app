@@ -31,10 +31,10 @@ export default function Menu() {
     <header className="cabecalho">
       <h1>BE</h1>
       <div className="input-pesquisar">
-        <span>
+        {/* <span>
           <i className="fa-solid fa-magnifying-glass"></i>Pesquisar
         </span>
-        <input type="text" name="" id="" />
+        <input type="text" name="" id="" /> */}
       </div>
       <i
         ref={btnHamburguerRef}
