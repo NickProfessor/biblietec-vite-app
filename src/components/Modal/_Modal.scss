@@ -1,0 +1,90 @@
+@use "../../abstract/variables";
+
+.pag-modal {
+  color: variables.$branco;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.476);
+  .modal-content {
+    width: 90%;
+    max-width: 1400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: variables.$cor-principal;
+    padding: 30px;
+    display: flex;
+    gap: 48px;
+    .fa-x {
+      position: fixed;
+      right: 15px;
+      top: 10px;
+      font-size: 18px;
+    }
+    .book-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .book-image {
+        background-color: variables.$branco;
+        padding: 10px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .book-editions {
+        margin-bottom: 18px;
+        font-size: 24px;
+        font-weight: 500;
+      }
+      .book-link {
+        color: variables.$cor-principal;
+        font-size: 24px;
+        font-weight: 700;
+        border-radius: 72px;
+        border: none;
+        padding: 4px 36px;
+      }
+    }
+    .content-book {
+      display: flex;
+      flex-direction: column;
+      .book-title {
+        margin-bottom: 8px;
+      }
+      .keywords {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        .book-author {
+          color: variables.$cinza-escuro;
+          font-size: 20px;
+        }
+      }
+      .description {
+        width: 100%;
+
+        .description-description {
+          margin-bottom: 4px;
+        }
+        .description-content {
+          width: 100%;
+          background-color: variables.$cor-secundaria;
+          padding: 8px 18px;
+
+          overflow: auto;
+        }
+      }
+    }
+  }
+}

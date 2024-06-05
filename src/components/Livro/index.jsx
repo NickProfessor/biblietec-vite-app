@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import images from "../../assets/images";
 import "./_Livro.scss";
+import Modal from "../Modal";
 
 export default function Livro({ id, title, image, editions, author, subject }) {
   const [description, setDescription] = useState();
+  const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,8 +23,13 @@ export default function Livro({ id, title, image, editions, author, subject }) {
 
     fetchData();
   }, [id]);
-  const exibeModal = async () => {
+  const exibeModal = () => {
+    setIsModalVisible(true);
     console.log(id, title, image, editions, author, subject, description);
+  };
+
+  const fechaModal = () => {
+    setIsModalVisible(false);
   };
   return (
     <div className="livro" onClick={exibeModal}>
@@ -37,6 +45,15 @@ export default function Livro({ id, title, image, editions, author, subject }) {
       <h3 id="preco">
         {editions > 1 ? `${editions} Edições` : `${editions} Edição`}
       </h3>
+      {isModalVisible &&
+        ReactDOM.createPortal(
+          <Modal onClose={fechaModal}>
+            <h2>{title}</h2>
+            <p>{description}</p>
+            <button onClick={fechaModal}>Close</button>
+          </Modal>,
+          document.getElementById("modal-root")
+        )}
     </div>
   );
 }
