@@ -48,6 +48,7 @@
     grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
   }
   #mostrarMais {
+    display: none;
     padding: 1em;
     font-size: 24px;
     font-weight: bold;
@@ -60,6 +61,9 @@
     text-transform: uppercase;
     margin: 40px 0;
     cursor: pointer;
+    &.visivel {
+      display: inline-block;
+    }
   }
 }
 
