@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Livro from "../../components/Livro";
 import "./_Livros.scss";
 import { useState } from "react";
@@ -8,12 +8,13 @@ export default function Livros() {
   const buscaLivros = async () => {
     try {
       const res = await fetch(
-        "https://openlibrary.org/search.json?q=harry+potter&fields=key,title,author_name,edition_count,cover_i,subject&limit=50"
+        "https://openlibrary.org/search.json?q=harry+potter&fields=key,title,author_name,edition_count,cover_i,subject&limit=20"
       );
       const data = await res.json();
       const listaLivros = data.docs;
       setLivros(listaLivros);
       console.log(listaLivros);
+      setHaLivrosNaPagina(true);
     } catch {
       console.log(error);
     }
@@ -22,6 +23,8 @@ export default function Livros() {
     buscaLivros();
   }, []);
 
+  const [haLivrosNaPagina, setHaLivrosNaPagina] = useState(false);
+  const mostrarMaisRef = useRef(null);
   return (
     <section className="pagina-livros">
       <div className="containerLivro">
@@ -50,7 +53,13 @@ export default function Livros() {
             />
           ))}
         </section>
-        <button id="mostrarMais">Mostrar mais</button>
+        <button
+          id="mostrarMais"
+          className={haLivrosNaPagina ? "visivel" : ""}
+          ref={mostrarMaisRef}
+        >
+          Mostrar mais
+        </button>
       </div>
     </section>
   );
