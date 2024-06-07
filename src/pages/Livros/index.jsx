@@ -17,7 +17,7 @@ export default function Livros() {
   const buscaLivros = async () => {
     try {
       const res = await fetch(
-        `https://openlibrary.org/search.json?q=o+homem+acima+dos+homens&fields=key,title,author_name,edition_count,cover_i,subject&limit=${limiteDeLivros}`
+        `https://openlibrary.org/search.json?q=maquiavel&fields=key,title,author_name,edition_count,cover_i,subject&limit=${limiteDeLivros}`
       );
       const data = await res.json();
       const listaLivros = data.docs;
