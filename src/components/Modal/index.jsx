@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import "./_Modal.scss";
 import images from "../../assets/images";
+
 export default function Modal({
   id,
   title,
@@ -10,13 +12,34 @@ export default function Modal({
   description,
   onClose,
 }) {
-  const fechaModal = () => {
-    setIsModalVisible(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    return () => setIsVisible(false);
+  }, []);
+
+  const handleClose = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      onClose();
+      setIsExiting(false);
+    }, 300);
   };
+
   return (
-    <div className="pag-modal">
-      <div className="modal-content">
-        <i class="fa-solid fa-x" onClick={onClose}></i>
+    <div
+      className={`pag-modal ${isVisible ? "visible" : ""} ${
+        isExiting ? "exiting" : ""
+      }`}
+    >
+      <div
+        className={`modal-content ${isVisible ? "visible" : ""} ${
+          isExiting ? "exiting" : ""
+        }`}
+      >
+        <i className="fa-solid fa-x" onClick={handleClose}></i>
         <aside className="book-visual">
           <div className="book-image">
             <img
@@ -31,7 +54,10 @@ export default function Modal({
           <div className="book-editions">
             {editions > 1 ? `${editions} Edições` : `${editions} Edição`}
           </div>
-          <button className="book-link" onClick={console.log("funcionou")}>
+          <button
+            className="book-link"
+            onClick={() => console.log("funcionou")}
+          >
             Ver Livro
           </button>
         </aside>
