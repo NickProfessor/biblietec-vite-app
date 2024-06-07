@@ -6,21 +6,26 @@ import { useState } from "react";
 export default function Livros() {
   const [livros, setLivros] = useState([]);
   const [limiteDeLivros, setLimiteDeLivros] = useState(20);
+  const [livrosDisponiveis, setLivrosDisponiveis] = useState(0);
   const [haLivrosNaPagina, setHaLivrosNaPagina] = useState(false);
 
   const mostraMaisLivros = () => {
-    if (livros.length < 100) {
-      setLimiteDeLivros((prevLimite) => prevLimite + 20);
+    if (livros.length > 100 || livros.length > livrosDisponiveis) {
+      return
+    }
+    else{
+      setLimiteDeLivros((prevLimite) => prevLimite + 20)
     }
   };
 
   const buscaLivros = async () => {
     try {
       const res = await fetch(
-        `https://openlibrary.org/search.json?q=maquiavel&fields=key,title,author_name,edition_count,cover_i,subject&limit=${limiteDeLivros}`
+        `https://openlibrary.org/search.json?q=maquiavel&fields=numFound,key,title,author_name,edition_count,cover_i,subject&limit=${limiteDeLivros}`
       );
       const data = await res.json();
       const listaLivros = data.docs;
+      setLivrosDisponiveis(data.numFound);
       setLivros(listaLivros);
       setHaLivrosNaPagina(listaLivros.length > 0);
       console.log(listaLivros);
