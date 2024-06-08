@@ -40,7 +40,7 @@ export default function Livros() {
 
   const mostrarMaisRef = useRef(null);
   const shouldShowButton = () =>{
-    livros.length <= 100 && livros.length <= livrosDisponiveis;
+    livros.length <= 100 || livros.length <= livrosDisponiveis;
 
   }
   return (
