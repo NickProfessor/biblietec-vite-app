@@ -10,11 +10,10 @@ export default function Livros() {
   const [haLivrosNaPagina, setHaLivrosNaPagina] = useState(false);
 
   const mostraMaisLivros = () => {
-    if (livros.length > 100 || livros.length > livrosDisponiveis) {
-      return
-    }
-    else{
-      setLimiteDeLivros((prevLimite) => prevLimite + 20)
+    if (livros.length >= 100 || livros.length >= livrosDisponiveis) {
+      return;
+    } else {
+      setLimiteDeLivros((prevLimite) => prevLimite + 20);
     }
   };
 
@@ -39,10 +38,8 @@ export default function Livros() {
   }, [limiteDeLivros]);
 
   const mostrarMaisRef = useRef(null);
-  const shouldShowButton = () =>{
-    livros.length <= 100 || livros.length <= livrosDisponiveis;
-
-  }
+  const shouldShowButton =
+    livros.length < 100 && livros.length < livrosDisponiveis;
   return (
     <section className="pagina-livros">
       <div className="containerLivro">
@@ -72,10 +69,10 @@ export default function Livros() {
             />
           ))}
         </section>
-        {shouldShowButton() && (
+        {shouldShowButton && (
           <button
             id="mostrarMais"
-            className={haLivrosNaPagina ? "visivel" : ""}
+            className={"visivel"}
             ref={mostrarMaisRef}
             onClick={mostraMaisLivros}
           >
