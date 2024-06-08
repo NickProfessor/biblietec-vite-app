@@ -39,7 +39,10 @@ export default function Livros() {
   }, [limiteDeLivros]);
 
   const mostrarMaisRef = useRef(null);
+  const shouldShowButton = () =>{
+    livros.length <= 100 && livros.length <= livrosDisponiveis;
 
+  }
   return (
     <section className="pagina-livros">
       <div className="containerLivro">
@@ -69,7 +72,7 @@ export default function Livros() {
             />
           ))}
         </section>
-        {livros.length < 100 && (
+        {shouldShowButton() && (
           <button
             id="mostrarMais"
             className={haLivrosNaPagina ? "visivel" : ""}
