@@ -15,30 +15,53 @@
   }
   .input-pesquisar {
     position: relative;
+    display: flex;
     width: 70%;
     margin: 0 auto;
-    padding: 2em 0;
     input {
-      padding: 0.3em;
+      padding: 0.3em 5em;
       font-size: 1em;
       color: variables.$branco;
-      padding-left: 5em;
       border-radius: 18px;
       border: solid 2px variables.$cor-secundaria;
       background: none;
       width: 100%;
       outline: none;
     }
-    span {
+    .icon-lupa {
       position: absolute;
       z-index: 0;
       left: 0;
-      top: 43%;
+      top: 50%;
+      transform: translateY(-50%);
       margin-left: 2em;
       display: flex;
       align-items: center;
       gap: 1.5em;
       color: variables.$cinza-escuro;
+    }
+    .btn-pesquisar {
+      position: absolute;
+      z-index: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100%;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 1.5em;
+      color: variables.$branco;
+      background-color: variables.$cor-secundaria;
+      border-radius: 0 18px 18px 0;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 1;
+      transform: all 200ms;
+      &:hover,
+      &:active {
+        opacity: 0.8;
+      }
     }
   }
   .secao-livros {

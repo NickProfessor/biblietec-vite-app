@@ -1,0 +1,55 @@
+@use "../../abstract/variables";
+
+.notFound {
+  margin: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  .imagem-do-livrinho {
+    width: 40%;
+    img {
+      width: 100%;
+      opacity: 0.7;
+      filter: drop-shadow(2px 2px 5px variables.$cor-secundaria);
+    }
+  }
+  .mensagem-do-livrinho {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 2em 0;
+    border-radius: 18px;
+    h4 {
+      color: variables.$cor-secundaria;
+    }
+    p {
+      color: variables.$branco;
+    }
+    i {
+      color: variables.$cor-principal;
+      font-style: normal;
+      border: 1px solid variables.$cor-secundaria;
+      padding: 0 0.2em;
+      border-radius: 8px;
+      background-color: variables.$cor-secundaria;
+    }
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .notFound {
+    flex-direction: column;
+    .imagem-do-livrinho {
+      height: 60%;
+      img {
+        height: 100%;
+      }
+    }
+    .mensagem-do-livrinho {
+      width: 100%;
+    }
+  }
+}

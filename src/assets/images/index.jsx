@@ -8,6 +8,7 @@ import titulo from "./icone-titulo.svg";
 import background from "./imagem-de-fundo.png";
 import capa_harry from "./capa-harry.svg";
 import imagem_padrao from "./imagem-nao-encontrada.png";
+import livro_404 from "./livrinho404.png";
 
 export default {
   coracao,
@@ -20,4 +21,5 @@ export default {
   background,
   capa_harry,
   imagem_padrao,
+  livro_404,
 };
