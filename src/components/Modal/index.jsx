@@ -54,12 +54,17 @@ export default function Modal({
           <div className="book-editions">
             {editions > 1 ? `${editions} Edições` : `${editions} Edição`}
           </div>
-          <button
-            className="book-link"
-            onClick={() => console.log("funcionou")}
+          <a
+            href={`https://www.google.com.br/search?q=${title}`}
+            target="_blank"
           >
-            Ver Livro
-          </button>
+            <button
+              className="book-link"
+              onClick={() => console.log("funcionou" + title)}
+            >
+              Ver Livro
+            </button>
+          </a>
         </aside>
         <section className="content-book">
           <h2 className="book-title">{title}</h2>
