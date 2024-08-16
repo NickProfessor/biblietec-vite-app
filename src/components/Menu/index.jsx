@@ -47,10 +47,10 @@ export default function Menu() {
             Fechar <i className="fa-solid fa-xmark"></i>
           </p>
         </span>
-        <Link to="/" onClick={closeMenu}>
+        {/* <Link to="/" onClick={closeMenu}>
           Inicio
-        </Link>
-        <Link to="/livros" onClick={closeMenu}>
+        </Link> */}
+        <Link to="/" onClick={closeMenu}>
           Livros
         </Link>
         <Link to="/sobre" onClick={closeMenu}>
